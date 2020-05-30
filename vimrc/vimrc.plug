@@ -1,0 +1,64 @@
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
+
+" Multiple Plug commands can be written in a single line using | separators
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+Plug 'frazrepo/vim-rainbow'
+
+Plug 'itchyny/lightline.vim'
+
+" On-demand loading
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'altercation/vim-colors-solarized'
+
+Plug 'majutsushi/tagbar'
+
+Plug 'sjbach/lusty'
+
+Plug 'mileszs/ack.vim'
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+" Using a non-master branch
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go'
+
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+
+
+" Initialize plugin system
+call plug#end()
+
+
+" NerdTree settings
+map <C-n> :NERDTreeToggle<CR>
+" close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" vim-solarized key
+call togglebg#map("<F5>")
+
+" Tagbar key binding
+nmap <F8> :TagbarToggle<CR>
+
+" LustyExplorer settings
+set hidden
+
+" Fzf keye bindings
+nnoremap <C-p> :Files<Cr>
+nnoremap <C-g> :Rg<Cr>
+
+
