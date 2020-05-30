@@ -3,7 +3,8 @@
 set -e
 set -x
 
-export WORKSPACE=${WORKSPACE:=~/src/personal}
+WORKSPACE=${WORKSPACE:=~/src/personal}
+ZSH_CUSTOM=${ZSH_CUSTOM:=~/.oh-my-zsh/custom}
 
 function fetch_repo {
   mkdir -p ${WORKSPACE}
@@ -82,11 +83,11 @@ function setup_zsh {
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
   # install plugins
-  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
-  git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions\
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting\
-  git clone git://github.com/gradle/gradle-completion ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/gradle-completion
-  git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/fzf-tab
+  git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM}/plugins/zsh-completions
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM}/plugins/zsh-autosuggestions\
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM}/plugins/zsh-syntax-highlighting\
+  git clone git://github.com/gradle/gradle-completion ${ZSH_CUSTOM}/plugins/gradle-completion
+  git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM}/plugins/fzf-tab
 
 
   # install powerlevel9k
@@ -128,6 +129,10 @@ function install_fzf {
   fi
 }
 
+function set_paths {
+  echo 'export PATH=$PATH:'"$WORKSPACE"'/dotfiles/cmds' >  ${ZSH_CUSTOM}/fuzzy_cmds.zsh
+}
+<< T
 fetch_repo
 initial_setup
 
@@ -146,5 +151,5 @@ setup_vim
 
 install_fzf
 install_pkg ripgrep
-
-
+T
+set_paths
