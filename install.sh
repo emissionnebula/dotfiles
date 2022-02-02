@@ -141,6 +141,7 @@ setup_goenv
 install_pkg maven
 install_pkg gradle
 install_pkg python3
+install autopep8
 
 # Setup Shell
 install_pkg zsh

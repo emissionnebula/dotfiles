@@ -89,3 +89,9 @@ endif
 
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" Autopep8 formatting
+au FileType python setlocal formatprg=autopep8\ -
+
+" Auto delete trailing whitespaces
+autocmd BufWritePre * %s/\s\+$//e

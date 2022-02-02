@@ -79,8 +79,12 @@ setopt INC_APPEND_HISTORY
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  asdf
+  brew
   git
   gradle-completion
+  history
+  kubectl
   zsh-autosuggestions
   zsh-completions
   zsh-syntax-highlighting
@@ -117,6 +121,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zshc="vim ~/.zshrc"
+alias src="cd ~/src"
+alias s="cd ~/src"
+alias sch="cd ~/src/schroedinger"
+alias vb="cd ~/src/schroedinger/vertx-base"
+alias ns="cd ~/src/schroedinger/notification-service"
+alias k="kubectl"
 
 # Reloading zsh completion because of extension
 autoload -U compinit && compinit
@@ -130,3 +140,29 @@ function jsonpp () {
 
 source ~/.oh-my-zsh/custom/plugins/fzf-tab/fzf-tab.plugin.zsh
 
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
+
+# ASDF configs
+# . /usr/local/opt/asdf/libexec/asdf.sh
+#. /usr/local/opt/asdf/asdf.sh
+
+# Go env setup
+export GOENV_GOPATH_PREFIX=$HOME/git/go
+godevenv() {
+  # Tell goenv where the GOPATH prefix is for all go versions
+  export GOENV_GOPATH_PREFIX=$HOME/git/go
+
+  # Setup and Init goenv
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
+  eval "$(goenv init -)"
+  export PATH="$PATH:$GOPATH/bin"
+
+  go version
+}
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc

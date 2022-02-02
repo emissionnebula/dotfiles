@@ -26,13 +26,18 @@ Plug 'sjbach/lusty'
 Plug 'mileszs/ack.vim'
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 Plug 'junegunn/fzf.vim'
+
+Plug 'nvie/vim-flake8'
+
 
 " Using a non-master branch
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
 " Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go'
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go'
 
 " Plugin options
 " Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
@@ -47,6 +52,7 @@ call plug#end()
 map <C-n> :NERDTreeToggle<CR>
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
 
 " vim-solarized key
 call togglebg#map("<F5>")
