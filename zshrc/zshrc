@@ -127,6 +127,7 @@ alias sch="cd ~/src/schroedinger"
 alias vb="cd ~/src/schroedinger/vertx-base"
 alias ns="cd ~/src/schroedinger/notification-service"
 alias k="kubectl"
+alias c="cd ~/src/ce-kafka"
 
 # Reloading zsh completion because of extension
 autoload -U compinit && compinit
@@ -166,3 +167,4 @@ godevenv() {
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+export PATH="/usr/local/opt/kubernetes-cli@1.22/bin:$PATH"
