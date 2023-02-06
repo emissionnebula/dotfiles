@@ -21,7 +21,7 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'majutsushi/tagbar'
 
-Plug 'sjbach/lusty'
+" Plug 'sjbach/lusty'
 
 Plug 'mileszs/ack.vim'
 

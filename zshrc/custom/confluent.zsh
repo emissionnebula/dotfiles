@@ -1,3 +1,8 @@
+# PYENV settings
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # CCloud dotfiles and environment scripts
 export CC_DOTFILES_BETA=true
 source ~/git/go/src/github.com/confluentinc/cc-dotfiles/caas.sh
@@ -19,4 +24,4 @@ alias halcpd='halctl --context cpd --vault-oidc-role halyard-devel --vault-token
 
 # vault addr
 export VAULT_ADDR=https://vault.cireops.gcp.internal.confluent.cloud
-
+alias vault_login=\"vault login -method=oidc -path=okta\"
